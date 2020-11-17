@@ -1,0 +1,200 @@
+﻿@model Website_Panda.Models.Product
+
+@{
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+@using (Html.BeginForm("Index", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <section class="banner-bottom-wthreelayouts py-lg-5 py-3">
+        <div class="container">
+            <div class="inner-sec-shop pt-lg-4 pt-3">
+                <div class="row">
+                    <div class="col-lg-4 single-right-left ">
+                        <div class="grid images_3_of_2">
+                            <div class="flexslider1">
+                                <ul class="slides">
+                                    <li data-thumb="../../Images/@Model.Image">
+                                        <div class="thumb-image"> <img src="~/Images/@Model.Image" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                    </li>
+                                    @if (Model.MoreImage1 == null)
+                                    {
+                                        <li data-thumb="../../Images/@Model.Image">
+                                            <div class="thumb-image"> <img src="~/Images/@Model.Image" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li data-thumb="../../Images/@Model.MoreImage1">
+                                            <div class="thumb-image"> <img src="~/Images/@Model.MoreImage1" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                        </li>
+                                    }
+                                    @if (Model.MoreImage2 == null)
+                                    {
+                                        <li data-thumb="../../Images/@Model.Image">
+                                            <div class="thumb-image"> <img src="~/Images/@Model.Image" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li data-thumb="../../Images/@Model.MoreImage2">
+                                            <div class="thumb-image"> <img src="~/Images/@Model.MoreImage2" data-imagezoom="true" class="img-fluid" alt=" "> </div>
+                                        </li>
+                                    }
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 single-right-left simpleCart_shelfItem">
+                        <h3>@Html.DisplayFor(model => model.ProductName)</h3>
+                        @if (Model.PromotionPrice <= 0 || Model.PromotionPrice == null)
+                        {
+                            <p>
+                                <span class="item_price">@Html.DisplayFor(model => model.Price)$</span>
+                            </p>
+                        }
+                        else
+                        {
+                            <p>
+                                <span class="item_price" style="text-decoration: line-through; opacity: 50%">@Html.DisplayFor(model => model.Price)$</span>
+                                <span class="item_price">@Html.DisplayFor(model => model.PromotionPrice)$</span>
+                            </p>
+                        }
+                        <div class="rating1">
+                            <ul class="stars">
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star-half-o" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="occasional">
+                            <h5>
+                                Color :
+                                <span>@Html.DisplayFor(model => model.Color)</span>
+                            </h5>
+                        </div>
+                        @if (Model.Quantity <= 0 || Model.Quantity == null)
+                        {
+                            <span style="font-size:x-large; text-decoration:underline;">Sorry, this product is out of stock now!</span>
+                        }
+                        else
+                        {
+                            <div class="occasion-cart">
+                                <div class="googles single-item singlepage">
+                                    <form action="#" method="post">
+                                        <a href="/ShoppingCart/AddtoCart"></a>
+                                        <input type="hidden" name="cmd" value="_cart">
+                                        <input type="hidden" name="add" value="1">
+                                        <input type="hidden" name="googles_item" value="@Model.ProductName">
+                                        @if (Model.PromotionPrice <= 0 || Model.PromotionPrice == null)
+                                        {
+                                            <input type="hidden" name="amount" value="@Model.Price">
+                                        }
+                                        else
+                                        {
+                                            <input type="hidden" name="amount" value="@Model.PromotionPrice">
+                                        }
+                                        <button type="submit" class="googles-cart pgoogles-cart">
+                                            Add to Cart
+                                        </button>
+                                        <button type="submit">
+                                            <i class="fa fa-heart" style="font-size:larger"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="clearfix"> </div>
+                    <!--/tabs-->
+                    <div class="responsive_tabs">
+                        <div id="horizontalTab">
+                            <ul class="resp-tabs-list">
+                                <li>Description</li>
+                                <li>Reviews</li>
+                                <li>Information</li>
+                            </ul>
+                            <div class="resp-tabs-container">
+                                <!--/tab_one-->
+                                <div class="tab1">
+
+                                    <div class="single_page">
+                                        <h6>@Html.DisplayFor(model => model.ProductName)</h6>
+                                        <p>
+                                        </p>
+                                        <p class="para">
+                                            @*@Html.DisplayFor(model => model.Description)*@
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie blandit ipsum auctor.
+                                            Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut lab ore et dolore magna aliqua.
+                                            Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore magna aliqua.
+                                        </p>
+                                    </div>
+                                </div>
+                                <!--//tab_one-->
+                                <div class="tab2">
+
+                                    <div class="single_page">
+                                        <div class="bootstrap-tab-text-grids">
+                                            <div class="bootstrap-tab-text-grid">
+                                            </div>
+                                            <div class="add-review">
+                                                <p>
+                                                    Thêm một bình luận hoặc thắc mắc về sản phẩm ở đây, nếu có vấn đề gì không hài lòng khách yêu có thể gửi mail
+                                                    riêng về cho Panda nhé, Panda sẽ rút kinh nghiệm ạ.
+                                                </p>
+                                                <h4>add a review</h4>
+                                                <iframe src="https://www.facebook.com/v3.2/plugins/comments.php?app_id=363772567412181&amp;href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php?fbid=388780811457061&set=a.106286559706489&type=3&theater
+                                                    " style="border: none; visibility: visible; width: 100%; height: 600px; overflow: auto;" class=""></iframe>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="tab3">
+
+                                    <div class="single_page">
+                                        <h6>Irayz Butterfly Sunglasses  (Black)</h6>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
+                                            blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                                            ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
+                                            magna aliqua.
+                                        </p>
+                                        <p class="para">
+                                            Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
+                                            blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                                            ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
+                                            magna aliqua.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--//tabs-->
+
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <!--/slide-->
+            <div class="slider-img mid-sec mt-lg-5 mt-2 px-lg-5 px-3">
+                <!--//banner-sec-->
+                <h3 class="tittle-w3layouts text-left my-lg-4 my-3">Featured Products</h3>
+                <div class="mid-slider">
+                    <div class="owl-carousel owl-theme row">
+                        @{ Html.RenderAction("MoreProduct", "Home", new { id = Model.CategoryID });}
+
+                    </div>
+                </div>
+            </div>
+            <!--//slider-->
+        </div>
+    </section>
+
+}

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Website_Panda.Models.Category>
+
+@{
+    Layout = null;
+}
+
+    <ul><li class="media-mini mt-3"><a href="/Home/AllProduct" style="color:black">All Product</a></li></ul>
+@foreach (var item in Model)
+{
+    <ul>
+        <li class="media-mini mt-3"><a href="/Home/ProductList/@item.CategoryID" style="color:black"> @Html.DisplayFor(modelItem => item.CategoryName)</a></li>
+    </ul>
+}

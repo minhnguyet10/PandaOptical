@@ -1,0 +1,174 @@
+﻿@model IEnumerable<Website_Panda.Models.Banner>
+
+@{
+    Layout = null;
+
+}
+<style>
+    /*--//responsive--*/
+#slider {
+    width: 100%;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slides {
+    width: 400%;
+    height: 100%;
+    position: relative;
+    -webkit-animation: slide 30s infinite;
+    -moz-animation: slide 30s infinite;
+    animation: slide 30s infinite;
+}
+
+.slider {
+    width: 25%;
+    height: 100%;
+    float: left;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+    .image img {
+        height: auto;
+        width: 100%;
+        /* height: 400px; */
+    }
+
+img {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Legend */
+.legend {
+    border-bottom: 0;
+    position: absolute;
+    bottom: 0;
+}
+
+/* Contents */
+.content {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+
+.content-txt {
+    width: 400px;
+    height: 150px;
+    float: left;
+    position: relative;
+    -webkit-animation: content-s 7.5s infinite;
+    -moz-animation: content-s 7.5s infinite;
+    animation: content-s 7.5s infinite;
+}
+
+    .content-txt h1 {
+        font-family: Arial;
+        text-transform: uppercase;
+        font-size: 24px;
+        color: #fff;
+        text-align: left;
+        margin-left: 30px;
+        padding-bottom: 10px;
+    }
+
+    .content-txt h2 {
+        font-family: arial;
+        font-weight: normal;
+        font-size: 14px;
+        font-style: italic;
+        color: #fff;
+        text-align: left;
+        margin-left: 30px;
+    }
+
+/* Switch */
+.switch {
+    width: 120px;
+    height: 10px;
+    position: absolute;
+    bottom: 50px;
+    z-index: 99;
+    left: 10px;
+}
+
+    .switch > ul {
+        list-style: none;
+    }
+
+        .switch > ul > li {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #333;
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+    .switch ul {
+        overflow: hidden;
+    }
+
+.on {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #f39c12;
+    position: relative;
+    -webkit-animation: on 30s infinite;
+    -moz-animation: on 30s infinite;
+    animation: on 30s infinite;
+}
+</style>
+<div class="banner">
+    <div id="slider">
+        <div class="slides">
+            @foreach (var item in Model)
+            {
+                <div class="slider">
+                    <div class="legend"></div>
+
+                    <div class="image">
+                        <img src="~/Images/@item.Image">
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="switch">
+            <ul>
+                <li>
+                    <div class="on"></div>
+                </li>
+                <li></li>
+                <li></li>
+                <li></li>
+              
+            </ul>
+        </div>
+    </div>
+   
+</div>
+<!--//banner -->
